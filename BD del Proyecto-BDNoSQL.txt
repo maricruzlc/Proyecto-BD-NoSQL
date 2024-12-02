@@ -1,0 +1,158 @@
+BD del Proyecto-BDNoSQL
+
+use Reseñas
+
+db.Usuarios.insertOne({
+ID_Usuario: 1,
+Nombre_Usuario: "Usuario1",
+Email:"usuario1@gmail.com",
+FechaRegistro: new Date(),
+Género: "Femenino"});
+
+
+db.Actores.insertMany([
+  {
+    ID_Actor: 1,
+    Nombre: "Paul Mescal",
+    Biografía: "Paul Colm Michael Mescal nació el 2 de febrero de 1996 en Maynooth, un pueblo del Condado de Kildare (Irlanda). Es el mayor de tres; tiene un hermano y una hermana menor. Asistió a la Maynooth Post Primary School y durante su infancia, soñó con ser un jugador de fútbol gaélico profesional y perteneció a varios clubes. Sus compañeros lo describían como un gran jugador, principalmente por su agilidad, y destacó como defensor. Sin embargo, abandonó los deportes tras haber sufrido una lesión en la mandíbula durante un partido. Luego de culminar la secundaria, estudió actuación en el Trinity College de la Universidad de Dublín, inspirado por su padre, quien siempre quiso ser un actor profesional, pero nunca tuvo la oportunidad.",
+    Filmografía: {
+      Películas: ["The Lost Daughter","Aftersun","God's Creatures","Carmen","All of Us Strangers"],
+      Series: ["Normal People","The Deceived"]
+    }
+  },
+  {
+    ID_Actor: 2,
+    Nombre: "Steve Carell",
+    Biografía: "Steven John Carell nació el 16 de agosto de 1962 en Acton, Massachusetts, EE.UU. Es conocido por su papel como Michael Scott en la serie de comedia *The Office*. Carell comenzó su carrera en comedia de improvisación en Chicago antes de mudarse a Nueva York para continuar en la comedia y en televisión. A lo largo de su carrera, ha participado en una variedad de proyectos cinematográficos y televisivos, incluidos *Anchorman*, *The 40-Year-Old Virgin*, *Little Miss Sunshine*, *Foxcatcher*, y *The Morning Show*.",
+    Filmografía: {
+      Películas: ["The 40-Year-Old Virgin", "Little Miss Sunshine", "Anchorman", "Foxcatcher", "Battle of the Sexes"],
+      Series: ["The Office", "The Morning Show"]
+    }
+  }
+]);
+
+
+db.Directores.insertMany([
+  {
+    ID_Director: 1,
+    Nombre: "Ridley Scott",
+    Biografía: "Ridley Scott es un director y productor británico conocido por su trabajo en el cine de ciencia ficción, acción y drama histórico. Nació el 30 de noviembre de 1937 en Inglaterra. Es famoso por películas como *Alien* (1979), *Blade Runner* (1982), *Gladiator* (2000), y *The Martian* (2015). Su estilo visual y su habilidad para crear mundos cinematográficos complejos le han valido numerosos premios y una carrera influyente en la industria del cine.",
+    Filmografía: {
+      Películas: ["Alien", "Blade Runner", "Gladiator", "The Martian", "Kingdom of Heaven", "Gladiator II"],
+      Series: ["The Terror"]
+    }
+  },
+  {
+    ID_Director: 2,
+    Nombre: "Randall Einhorn",
+    Biografía: "Randall Einhorn es un director, productor y cinematógrafo estadounidense conocido principalmente por su trabajo en televisión. Nació el 20 de enero de 1968. Ha trabajado como director en numerosas series de comedia y drama, y es especialmente reconocido por su participación en *The Office* (2005-2013), donde dirigió varios episodios clave. También ha trabajado en otras series como *Parks and Recreation* y *The Mindy Project*.",
+    Filmografía: {
+      Películas: [],
+      Series: ["The Office", "Parks and Recreation", "The Mindy Project", "It's Always Sunny in Philadelphia"]
+    }
+  }
+]);
+
+
+db.Genero.insertMany([
+{
+  ID_Genero: 1,
+  Nombre: "Acción"
+},
+{
+  ID_Genero: 2,
+  Nombre: "Comedia"
+}]);
+
+
+db.TipoContenido.insertMany([
+{
+  ID_TipoContenido: 1,
+  NombreContenido: "Película"
+},
+{
+  ID_TipoContenido: 2,
+  NombreContenido: "Serie"
+}]);
+
+
+db.Productoras.insertMany([
+  {
+    ID_Productora: 1,
+    Nombre: "Scott Free Productions",
+    Descripcion: "Scott Free Productions es una productora cinematográfica y televisiva fundada por Ridley Scott y Tony Scott. La compañía ha producido una amplia variedad de proyectos, incluidas películas aclamadas como *Gladiator* y *The Martian*, así como series de televisión como *The Terror*. Con su enfoque en historias de alto impacto y dirección artística, Scott Free ha sido un jugador clave en la industria del cine y la televisión durante décadas."
+  },
+  {
+    ID_Productora: 2,
+    Nombre: "Deedle-Dee Productions",
+    Descripcion: "Deedle-Dee Productions es una productora de televisión fundada por el actor y productor Greg Daniels. Es conocida por producir varias comedias exitosas, particularmente *The Office* (US), una de las series de comedia más populares y aclamadas de todos los tiempos. La productora se especializa en proyectos de comedia con un enfoque en la narración de historias de personajes profundos y situaciones cotidianas."
+  }
+]);
+
+
+db.Peliculas.insertOne({
+  ID_Pelicula: 1,
+  Título: "Gladiador II",
+  FechaLanzamiento: new Date("2024-11-15"),
+  Duración: 148,
+  Sinopsis: "Años después de presenciar la muerte del admirado héroe Máximo a manos de su tío, Lucio (Paul Mescal) se ve forzado a entrar en el Coliseo tras ser testigo de la conquista de su hogar por parte de los tiránicos emperadores que dirigen Roma con puño de hierro. Con un corazón desbordante de furia y el futuro del imperio en juego, Lucio debe rememorar su pasado en busca de la fuerza y el honor que devuelvan al pueblo la gloria perdida de Roma.",
+  ID_Director: 1,
+  ID_Actor: 1,
+  ID_Género: 1,
+  Imagen: "https://imgur.com/Nq8gZm8",
+  ID_TipoContenido: 1,
+  ID_Productora: 1
+});
+
+
+db.Series.insertOne({
+  ID_Serie: 1,
+  Título: "The Office",
+  Temporadas: 9,
+  EpisodiosTotales: 201,
+  FechaLanzamiento: new Date("2005-03-24"),
+  Sinopsis: "The Office es una serie de televisión estadounidense de humor que narra la vida de los empleados de la empresa de venta de papel Dunder Mifflin, ubicada en Scranton, Pensilvania. La serie se centra en las locuras de los trabajadores, liderados por el incompetente jefe Michael Scott, y en cómo este intenta encauzar el descontento de sus empleados.",
+  ID_Director: 2,
+  ID_Protagonista: 2,
+  ID_Genero: 2,
+  Imagen: "https://imgur.com/6q4TpWx",
+  ID_TipoContenido: 2,
+  ID_Productora: 2
+});
+
+
+db.Comentario.insertOne({
+  ID_Comentario: 1,
+  ID_TipoContenido: 1,
+  ID_Usuario: 1,
+  Fecha: new Date(),
+  Comentario: "Excelente Pelicula",
+  Calificacion: 5
+});
+
+
+db.Favoritos.insertOne({
+  ID_Favorito: 1,
+  ID_TipoContenido: 1,
+  ID_Usuario: 1
+});
+
+
+db.Listas.insertOne({
+  ID_Lista: 1,
+  Nombre: "Lista de Series de Comedia",
+  ID_TipoContenido: 2,
+  ID_Usuario: 1
+});
+
+
+db.Noticias.insertOne({
+  ID_Noticia: 1,
+  Titulo: "Películas esperadas para el año 2025",
+  Descripcion: "El año 2025 promete ser un gran año para el cine, con una mezcla de secuelas muy esperadas y nuevos proyectos de grandes directores como Christopher Nolan y Ridley Scott.",
+  Imagen: "https://imgur.com/wcKqH4p",
+  FechaPublicacion: new Date()
+});
+
+
+
