@@ -99,11 +99,65 @@ db.Peliculas.insertOne({
   ID_Director: 1,
   ID_Actor: 1,
   ID_Género: 1,
-  Imagen: "https://imgur.com/Nq8gZm8",
+  Imagen: "https://i.imgur.com/Nq8gZm8.jpeg",
   ID_TipoContenido: 1,
   ID_Productora: 1
 });
 
+db.Peliculas.insertMany([
+  {
+    ID_Pelicula: 2,
+    Título: "The Martian",
+    FechaLanzamiento: new Date("2015-10-02"),
+    Duración: 144,
+    Sinopsis: "Un astronauta queda atrapado en Marte y debe usar su ingenio para sobrevivir mientras espera un rescate.",
+    ID_Director: 1,
+    ID_Actor: 1,
+    ID_Género: 1,
+    Imagen: "https://image.tmdb.org/t/p/original/mWTJMijZRuvxUbE1WgKwRBwveuX.jpg",
+    ID_TipoContenido: 1,
+    ID_Productora: 1
+  },
+  {
+    ID_Pelicula: 3,
+    Título: "Blade Runner",
+    FechaLanzamiento: new Date("1982-06-25"),
+    Duración: 117,
+    Sinopsis: "En un futuro distópico, un Blade Runner debe perseguir y 'retirar' replicantes rebeldes.",
+    ID_Director: 1,
+    ID_Actor: 1,
+    ID_Género: 1,
+    Imagen: "https://i.imgur.com/uI1DI5C.jpeg",
+    ID_TipoContenido: 1,
+    ID_Productora: 1
+  },
+  {
+    ID_Pelicula: 4,
+    Título: "Little Miss Sunshine",
+    FechaLanzamiento: new Date("2006-07-26"),
+    Duración: 101,
+    Sinopsis: "Una familia disfuncional viaja a través del país para apoyar a su hija en un concurso de belleza.",
+    ID_Director: 2,
+    ID_Actor: 2,
+    ID_Género: 2,
+    Imagen: "https://image.tmdb.org/t/p/original/tFnTds88mCuLcLPBseK1kF2E3qv.jpg",
+    ID_TipoContenido: 1,
+    ID_Productora: 2
+  },
+  {
+    ID_Pelicula: 5,
+    Título: "Foxcatcher",
+    FechaLanzamiento: new Date("2014-11-14"),
+    Duración: 134,
+    Sinopsis: "Un entrenador multimillonario entrena a dos hermanos luchadores con resultados trágicos.",
+    ID_Director: 2,
+    ID_Actor: 2,
+    ID_Género: 1,
+    Imagen: "https://i.imgur.com/2Y4Bh7s.jpeg",
+    ID_TipoContenido: 1,
+    ID_Productora: 2
+  }
+]);
 
 db.Series.insertOne({
   ID_Serie: 1,
@@ -115,11 +169,69 @@ db.Series.insertOne({
   ID_Director: 2,
   ID_Protagonista: 2,
   ID_Genero: 2,
-  Imagen: "https://imgur.com/6q4TpWx",
+  Imagen: "https://i.imgur.com/6q4TpWx.jpeg",
   ID_TipoContenido: 2,
   ID_Productora: 2
 });
 
+db.Series.insertMany([
+  {
+    ID_Serie: 2,
+    Título: "Parks and Recreation",
+    Temporadas: 7,
+    EpisodiosTotales: 125,
+    FechaLanzamiento: new Date("2009-04-09"),
+    Sinopsis: "Una comedia sobre los empleados del departamento de parques de Pawnee, Indiana.",
+    ID_Director: 2,
+    ID_Protagonista: 2,
+    ID_Genero: 2,
+    Imagen: "https://i.imgur.com/HLUR0VX.jpeg",
+    ID_TipoContenido: 2,
+    ID_Productora: 2
+  },
+  {
+    ID_Serie: 3,
+    Título: "The Morning Show",
+    Temporadas: 3,
+    EpisodiosTotales: 30,
+    FechaLanzamiento: new Date("2019-11-01"),
+    Sinopsis: "Una mirada detrás de las cámaras de los dramas y conflictos de un popular programa matutino.",
+    ID_Director: 2,
+    ID_Protagonista: 2,
+    ID_Genero: 2,
+    Imagen: "https://img-tomatazos.buscafs.com/413798/413798.jpg",
+    ID_TipoContenido: 2,
+    ID_Productora: 2
+  },
+  {
+    ID_Serie: 4,
+    Título: "The Terror",
+    Temporadas: 2,
+    EpisodiosTotales: 20,
+    FechaLanzamiento: new Date("2018-03-25"),
+    Sinopsis: "Un thriller de horror basado en la expedición perdida del HMS Terror en el Ártico.",
+    ID_Director: 1,
+    ID_Protagonista: 1,
+    ID_Genero: 1,
+    Imagen: "https://i.imgur.com/1ogWpTn.jpeg",
+    ID_TipoContenido: 2,
+    ID_Productora: 1
+  },
+  {
+    ID_Serie: 5,
+    Título: "It's Always Sunny in Philadelphia",
+    Temporadas: 15,
+    EpisodiosTotales: 162,
+    FechaLanzamiento: new Date("2005-08-04"),
+    Sinopsis: "Un grupo de amigos sin escrúpulos maneja un pub irlandés en Filadelfia.",
+    ID_Director: 2,
+    ID_Protagonista: 2,
+    ID_Genero: 2,
+    Imagen: "https://flxt.tmsimg.com/assets/p8240657_b_v10_ab.jpg",
+    ID_TipoContenido: 2,
+    ID_Productora: 2
+  }
+]);
 
 db.Comentario.insertOne({
   ID_Comentario: 1,
@@ -153,6 +265,8 @@ db.Noticias.insertOne({
   Imagen: "https://imgur.com/wcKqH4p",
   FechaPublicacion: new Date()
 });
+
+
 
 
 
