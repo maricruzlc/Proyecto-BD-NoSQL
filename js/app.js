@@ -86,7 +86,35 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
   
 	  
-	 
+  document.addEventListener('DOMContentLoaded', async () => {
+	try {
+	  const response = await fetch('http://localhost:3000/api/noticias'); // Cambia a tu endpoint real
+	  const data = await response.json();
+
+	  const newsContainer = document.getElementById('news-container');
+	  newsContainer.innerHTML = ""; // Limpia el contenedor
+
+	  data.forEach((noticia) => {
+		const newsHTML = `
+		  <div class="news-item">
+			<img src="${noticia.Imagen}" alt="${noticia.Titulo}">
+			<div class="news-content">
+			  <div class="news-category">Noticias - Actualidad</div>
+			  <h3 class="news-title">${noticia.Titulo}</h3>
+			  <p class="news-description">${noticia.Descripcion}</p> <!-- Muestra toda la descripción -->
+			  <p class="news-date">${new Date(noticia.FechaPublicacion).toLocaleDateString()}</p>
+			</div>
+		  </div>
+		`;
+		newsContainer.innerHTML += newsHTML;
+	  });
+	} catch (error) {
+	  console.error('Error al cargar noticias:', error);
+	}
+  });
+  
+  
+	   
   
 
   

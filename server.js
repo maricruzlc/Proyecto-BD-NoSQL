@@ -23,11 +23,13 @@ mongoose
 const peliculasRoutes = require('./routes/peliculasRoutes');
 const seriesRoutes = require('./routes/seriesRoutes');
 const contenidoRoutes = require('./routes/contenidoRoutes');
+const noticiaRoutes = require('./routes/noticiaRoutes');
 
 app.use(express.static(__dirname));
 app.use('/api/peliculas', peliculasRoutes);
 app.use('/api/series', seriesRoutes);
 app.use('/api/contenido', contenidoRoutes);
+app.use('/api/noticias', noticiaRoutes);
 // Iniciar el servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

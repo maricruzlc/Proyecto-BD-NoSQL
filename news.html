@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News - Reviews Brodie</title>
+  <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+  <link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <style>
+    .news-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .news-item {
+      display: flex;
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .news-item:hover {
+      transform: scale(1.02);
+    }
+
+    .news-item img {
+      width: 40%; /* Imagen ocupa el 40% del espacio */
+      object-fit: cover;
+    }
+
+    .news-content {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .news-category {
+      font-size: 0.8rem;
+      color: #ff5722;
+      font-weight: bold;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .news-title {
+      font-size: 1rem;
+      margin: 8px 0;
+      font-weight: bold;
+      color: #333;
+      line-height: 1.4;
+    }
+
+    .news-description {
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .news-date {
+      font-size: 0.75rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div id="site-content">
+    <header class="site-header">
+      <div class="container">
+        <a href="index.html" id="branding">
+          <img src="images/logo.png" alt="" class="logo">
+          <div class="logo-copy">
+            <h1 class="site-title">Reviews Brodie</h1>
+            <small class="site-description">Las Mejores reviews</small>
+          </div>
+        </a>
+        <div class="main-navigation">
+          <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+          <ul class="menu">
+            <li class="menu-item"><a href="index.html">Home</a></li>
+            <li class="menu-item"><a href="movies.html">Movies</a></li>
+            <li class="menu-item"><a href="shows.html">TV Shows</a></li>
+            <li class="menu-item current-menu-item"><a href="news.html">News</a></li>
+            <li class="menu-item"><a href="joinus.html">Login</a></li>
+          </ul>
+          <form action="#" class="search-form">
+            <input type="text" placeholder="Search...">
+            <button><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+        <div class="mobile-navigation"></div>
+      </div>
+    </header>
+
+    <main class="main-content">
+		<div class="container">
+		  <h2 class="section-title">Latest News</h2>
+		  <div id="news-container" class="news-grid">
+			<!-- Noticias generadas dinámicamente aquí -->
+		  </div>
+		</div>
+	  </main>
+	  
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="colophon">Copyright 2024 Reviews Brodie, Designed by Grupo 6. All rights reserved</div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

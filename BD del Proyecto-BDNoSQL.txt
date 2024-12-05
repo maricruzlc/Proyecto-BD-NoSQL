@@ -260,13 +260,34 @@ db.Listas.insertOne({
 
 db.Noticias.insertOne({
   ID_Noticia: 1,
-  Titulo: "Películas esperadas para el año 2025",
+  Titulo: "El año 2025 se ve Prometedor",
   Descripcion: "El año 2025 promete ser un gran año para el cine, con una mezcla de secuelas muy esperadas y nuevos proyectos de grandes directores como Christopher Nolan y Ridley Scott.",
-  Imagen: "https://imgur.com/wcKqH4p",
+  Imagen: "https://i.imgur.com/wcKqH4p.jpeg",
   FechaPublicacion: new Date()
 });
 
-
-
+db.Noticias.insertMany([
+  {
+  ID_Noticia: 2,
+  Titulo: "Engañar a Hacienda puede salir muy caro: llega a los cines la versión española de un éxito en Francia",
+  Descripcion: "Gutiérrez da vida a un empresario que engaña a Hacienda y le acaban pillando. Como castigo, además de una cuantiosa multa, se ve obligado a trasladar sus oficinas al barrio marginal de Los Caños, en el extrarradio. ",
+  Imagen: "https://es.web.img3.acsta.net/img/c8/b8/c8b8e72f853afaac6cfea30871814e02.jpg",
+  FechaPublicacion: new Date()
+  },
+  {
+  ID_Noticia: 3,
+  Titulo: "“Tengo 17 años y no tengo hogar”: Este actor de 'Loki' pide ayuda en rede sociales tras vivir en la calle",
+  Descripcion: "Sin entrar en detalles, sufrí abusos en casa. Se trataba de violencia física, abuso emocional, etc. No tuve una buena educación. Tengo problemas de salud mental. Tengo autismo, TDAH y me están haciendo pruebas para detectar trastorno bipolar y psicosis.",
+  Imagen: "https://es.web.img2.acsta.net/c_400_225/img/bd/e7/bde71741407fc87d1e7150beb7c54451.jpg",
+  FechaPublicacion: new Date()
+  },
+  {
+  ID_Noticia: 4,
+  Titulo: "Sólo tienes 6 días para verla en Netflix: el brutal ‘thriller’ que cambió la carrera de Denis Villeneuve",
+  Descripcion: "Sin duda, el canadiense tuvo un punto de inflexión muy importante con Sicario, una impactante y exitosa película donde dirige a Emily Blunt, Josh Brolin y Benicio del Toro. Un thriller duro y espectacular que puedes ver ahora mismo en Netflix, aunque por tiempo limitado. El 9 de diciembre es su último día en el catálogo.",
+  Imagen: "https://es.web.img3.acsta.net/c_640_360/img/5f/18/5f18c6496e765880fa0e5733a5bc4da5.jpg",
+  FechaPublicacion: new Date()
+  }
+  ]);
 
 
