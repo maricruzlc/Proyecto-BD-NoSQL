@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News - Reviews Brodie</title>
+  <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+  <link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <style>
+    .news-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .news-item {
+      display: flex;
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .news-item:hover {
+      transform: scale(1.02);
+    }
+
+    .news-item img {
+      width: 40%;
+      object-fit: cover;
+    }
+
+    .news-content {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .news-category {
+      font-size: 0.8rem;
+      color: #ff5722;
+      font-weight: bold;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .news-title {
+      font-size: 1rem;
+      margin: 8px 0;
+      font-weight: bold;
+      color: #333;
+      line-height: 1.4;
+    }
+
+    .news-description {
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .news-date {
+      font-size: 0.75rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div id="news-container"></div>
+
+
+    <header class="site-header">
+      <div class="container">
+        <a href="index.html" id="branding">
+          <img src="images/logo.png" alt="" class="logo">
+          <div class="logo-copy">
+            <h1 class="site-title">Reviews Brodie</h1>
+            <small class="site-description">Las Mejores reviews</small>
+          </div>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <h1>Inicio de Sesión</h1>
+      <form id="register-form" action="/usuarios/login" method="POST">
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" required>
+        
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena" required>
+        
+        <button type="submit">Iniciar Sesión</button>
+      </form>
+      <a href="/registro">¿No tienes cuenta? Regístrate aquí</a>
+    </main>
+  </div>
+  
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
