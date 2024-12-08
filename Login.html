@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +8,12 @@
   <link href="fonts/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="images/logo.png">
-  <script src="Login.js" defer ></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+  <script src="register.js" defer></script>
+
+
   <style>
-    /* Estilo del bloque de noticias */
+    /* Estilos de noticias (puedes mantenerlos si es necesario) */
     .news-grid {
       display: flex;
       flex-direction: column;
@@ -89,21 +92,13 @@
       <div class="news-item">
         <img src="images/logo.png" alt="Logo">
         <div class="news-content">
-          <div class="news-category">Registro</div>
-          <form action="/usuarios/registro" method="POST">
-            <div class="news-title">Crear Cuenta</div>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
-
-            <label for="correo">Correo:</label>
-            <input type="email" id="correo" name="correo" required>
-
-            <label for="contrasena">Contraseña:</label>
-            <input type="password" id="contrasena" name="contrasena" required>
-
-            <button type="submit">Registrarse</button>
+          <div class="news-category">Iniciar Sesión</div>
+          <form id="Login-form" onsubmit="handleLogin(event)">
+            <input type="text" id="username" name="user" placeholder="Usuario" required />
+            <input type="password" id="password" name="password" placeholder="Contraseña" required autocomplete="current-password" />
+            <button type="submit">Login</button>
           </form>
-          <p><a href="/login">¿Ya tienes cuenta? Inicia sesión aquí</a></p>
+          <p><a href="/Register.html">¿No tienes cuenta? Regístrate aquí</a></p> <!-- Cambié el texto para que coincida con la acción -->
         </div>
       </div>
     </main>
@@ -116,5 +111,7 @@
   <script src="js/jquery-1.11.1.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/app.js"></script>
+
+
 </body>
 </html>
