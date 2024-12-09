@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle de Película</title>
+  <!-- Cargar fuentes de terceros -->
+  <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+  <link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="stylesheet" href="style.css"> <!-- Asegúrate de que el CSS se cargue correctamente -->
+  <link rel="stylesheet" href="style_Detalle.css"> <!-- Asegúrate de que el CSS se cargue correctamente -->
+</head>
+<body>
+
+    <div>
+        <header class="site-header">
+            <div>
+                <a href="index.html" id="branding">
+                    <img src="images/logo.png" alt="" class="logo">
+                    <div class="logo-copy">
+                        <h1 class="site-title">Reviews Brodie</h1>
+                        <small class="site-description">Las Mejores reviews</small>
+                    </div>
+                </a> <!-- #branding -->
+
+                <div class="main-navigation">
+                    <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+                    <ul class="menu">
+                        <li class="menu-item current-menu-item"><a href="index.html">Home</a></li>
+                        <li class="menu-item"><a href="movies.html">Movies</a></li>
+                        <li class="menu-item"><a href="shows.html">TV Shows</a></li>
+                        <li class="menu-item"><a href="news.html">News</a></li>
+                        <li class="menu-item"><a href="joinus.html">Login</a></li>
+                    </ul> <!-- .menu -->
+
+                    <form action="#" class="search-form">
+                        <input type="text" placeholder="Search...">
+                        <button><i class="fa fa-search"></i></button>
+                    </form>
+                </div> <!-- .main-navigation -->
+
+                <div class="mobile-navigation"></div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="page">
+                <div id="movie-detail">
+                    <img id="imagen" src="" alt="Imagen de la película" style="width: 100%; max-height: 400px; object-fit: cover;"> <!-- Imagen de la película -->
+                    <div>
+                        <h1 id="titulo">Cargando...</h1> <!-- Título de la película -->
+                        <h3>Sinopsis: <span id="sinopsis">Cargando descripción...</span></h3>
+                        <h3>Fecha de Lanzamiento: <span id="fecha">Cargando Fecha de lanzamiento...</span></h3>
+                        <h3>Duración: <span id="duracion">Cargando duración...</span></h3>
+                        <h3>Director: <span id="director"></span></h3>
+                        <h3>Actor: <span id="actor"></span></h3>
+                        <h3>Genero: <span id="Genero"></span></h3>
+                        <h3>Productora: <span id="productora"></span></h3>
+                        <h3>Tipo Contenido: <span id="tipocontenido"></span></h3>
+                    </div>
+                </div>
+            </div>
+
+             <div id="comentarios-section">
+                <ul id="comentarios-list">
+                    
+                </ul>
+                <h2>Comentarios</h2> <!-- Título para la sección de comentarios -->
+                <div id="comentarios-container"> <!-- Cambié el id aquí para evitar duplicados -->
+                
+        
+                <!-- Formulario para agregar un comentario -->
+                <form id="comentarioForm">
+                    <label for="comentario">Comentario:</label>
+                    <textarea id="comentario" name="comentario" required></textarea>
+                
+                    <label for="calificacion">Calificación:</label>
+                    <input type="number" id="calificacion" name="calificacion" min="1" max="5" required />
+                
+                    <button type="submit">Agregar Comentario</button>
+                </form>
+            </div>
+        
+        </main>
+        
+        <footer class="site-footer">
+            <div class="container">
+                <div class="colophon">Copyright 2024 Reviews Brodie, Designed by Grupo 6. All rights reserved</div>
+            </div> <!-- .container -->
+        </footer>
+    </div>
+
+    <!-- Carga el archivo JS -->
+    <script src="js/detalle.js"></script> <!-- Asegúrate de que el JS se cargue correctamente -->
+</body>
+</html>

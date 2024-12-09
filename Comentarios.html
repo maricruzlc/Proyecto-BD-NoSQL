@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Comentarios</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 15px;
+      padding: 10px;
+      background: #eef;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Comentarios</h1>
+    <ul id="comentarios-list">
+      <li>Cargando comentarios...</li>
+    </ul>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const response = await fetch('http://localhost:3000/comentarios');
+    const data = await response.json();
+
+    if (data.length > 0) {
+      const comentariosList = document.getElementById('comentarios-list');
+      comentariosList.innerHTML = ''; // Limpiar la lista antes de agregar los nuevos comentarios
+
+      data.forEach(comentario => {
+        const comentarioItem = document.createElement('li');
+        comentarioItem.innerHTML = `
+          <strong>Calificación: ${comentario.Calificacion}</strong><br>
+          <p>${comentario.Comentario}</p>
+          <small>Publicado el ${new Date(comentario.Fecha).toLocaleDateString()}</small>
+        `;
+        comentariosList.appendChild(comentarioItem);
+      });
+    } else {
+      console.log('No hay comentarios disponibles.');
+    }
+  } catch (error) {
+    console.error('Error al cargar los comentarios:', error);
+  }
+});
+  </script>
+</body>
+</html>

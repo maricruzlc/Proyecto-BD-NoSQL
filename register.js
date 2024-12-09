@@ -54,8 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "index.html"; // Redirigir a la página principal
     });
   });
-  
 
+  
+  
   async function handleLogin(event) {
     event.preventDefault();
   
@@ -89,4 +90,3 @@ document.addEventListener("DOMContentLoaded", () => {
       alert('Ocurrió un error inesperado.');
     }
   }
-  
