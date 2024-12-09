@@ -45,47 +45,99 @@
 })(jQuery, document, window);
 
 document.addEventListener('DOMContentLoaded', async () => {
-	try {
-	  const response = await fetch('http://localhost:3000/api/contenido');
-	  const data = await response.json();
+  try {
+    const response = await fetch('http://localhost:3000/api/contenido');
+    const data = await response.json();
+
+    // Renderizar películas si el contenedor 'peliculas' existe
+    const peliculasContainer = document.getElementById('peliculas');
+    if (peliculasContainer) {
+      data.peliculas.forEach((pelicula) => {
+        const peliculaHTML = `
+          <div class="col-sm-6 col-md-3">
+            <div class="latest-movie">
+              <!-- Redirigir a detalle.html usando el ID de la película -->
+              <a href="/detalle.html?id=${pelicula.ID_Pelicula}">
+                <img src="${pelicula.Imagen}" alt="${pelicula.Título}">
+              </a>
+              <h4>${pelicula.Título}</h4>
+            </div>
+          </div>
+        `;
+        peliculasContainer.innerHTML += peliculaHTML;
+      });
+    }
+
+  } catch (error) {
+    console.error('Error al obtener las películas:', error);
+  }
   
-	  // Renderizar películas si el contenedor 'peliculas' existe
-	  const peliculasContainer = document.getElementById('peliculas');
-	  if (peliculasContainer) {
-		data.peliculas.forEach((pelicula) => {
-		  const peliculaHTML = `
-			<div class="col-sm-6 col-md-3">
-			  <div class="latest-movie">
-				<a href="#"><img src="${pelicula.Imagen}" alt="${pelicula.Título}"></a>
-				<h4>${pelicula.Título}</h4>
-			  </div>
-			</div>
-		  `;
-		  peliculasContainer.innerHTML += peliculaHTML;
-		});
-	  }
+});
+	  
+  document.addEventListener('DOMContentLoaded', async () => {
+	// Verificar si estamos en la página index.html o detalle.html
+	if (window.location.pathname === "/index.html" || window.location.pathname === "/") {
+	  try {
+		const response = await fetch('http://localhost:3000/api/peliculas'); // Asegúrate de usar el endpoint correcto
+		const peliculas = await response.json();
   
-	  // Renderizar series si el contenedor 'series' existe
-	  const seriesContainer = document.getElementById('series');
-	  if (seriesContainer) {
-		data.series.forEach((serie) => {
-		  const serieHTML = `
-			<div class="col-sm-6 col-md-3">
-			  <div class="latest-movie">
-				<a href="#"><img src="${serie.Imagen}" alt="${serie.Título}"></a>
-				<h4>${serie.Título}</h4>
+		// Renderizar películas solo si el contenedor está vacío
+		const peliculasContainer = document.getElementById('peliculas');
+		if (peliculasContainer && peliculasContainer.innerHTML === "") {  // Verifica si ya hay contenido
+		  peliculas.forEach((pelicula) => {
+			const peliculaHTML = `
+			  <div class="col-sm-6 col-md-3">
+				<div class="latest-movie">
+				  <a href="/detalle.html?id=${pelicula.ID_Pelicula}">
+					<img src="${pelicula.Imagen}" alt="${pelicula.Titulo}">
+				  </a>
+				  <h4>${pelicula.Titulo}</h4>
+				</div>
 			  </div>
-			</div>
-		  `;
-		  seriesContainer.innerHTML += serieHTML;
-		});
+			`;
+			peliculasContainer.innerHTML += peliculaHTML;
+		  });
+		}
+	  } catch (error) {
+		console.error('Error al obtener las películas:', error);
 	  }
-	} catch (error) {
-	  console.error('Error al obtener contenido:', error);
+	}
+  
+	// Para la página detalle.html
+	if (window.location.pathname === "/detalle.html") {
+	  const urlParams = new URLSearchParams(window.location.search);
+	  const peliculaId = urlParams.get('id');
+	  const url = `http://localhost:3000/api/peliculas/${peliculaId}`;
+  
+	  fetch(url)
+		.then(response => response.json())
+		.then(pelicula => {
+		  // Verifica si la película existe
+		  console.log(pelicula);
+  
+		  // Asigna los datos al HTML
+		  const tituloElement = document.getElementById('Titulo');
+		  const sinopsisElement = document.getElementById('Sinopsis');
+		  const imagenElement = document.getElementById('imagen');
+  
+		  if (pelicula) {
+			// Si la película existe, se muestra en el HTML
+			tituloElement.textContent = pelicula.Titulo || 'Título no disponible';
+			sinopsisElement.textContent = pelicula.Sinopsis || 'Descripción no disponible';
+			imagenElement.src = pelicula.Imagen || 'ruta/a/imagen/default.jpg';
+		  } else {
+			sinopsisElement.textContent = 'Película no encontrada';
+		  }
+		})
+		.catch(err => {
+		  console.error('Error al obtener película:', err);
+		  const sinopsisElement = document.getElementById('Sinopsis');
+		  sinopsisElement.textContent = 'Error al cargar los datos de la película.';
+		});
 	}
   });
   
-	  
+
   document.addEventListener('DOMContentLoaded', async () => {
 	try {
 	  const response = await fetch('http://localhost:3000/api/noticias'); // Cambia a tu endpoint real
@@ -116,7 +168,37 @@ document.addEventListener('DOMContentLoaded', async () => {
 	}
   });
   
-  
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      // Hacer la solicitud para obtener las series
+      const response = await fetch('http://localhost:3000/api/Series'); // Asegúrate de que esta ruta esté correcta
+      if (!response.ok) {
+        throw new Error('No se pudieron cargar las series');
+      }
+
+      const series = await response.json(); // Parsear la respuesta en formato JSON
+
+      // Obtener el contenedor de las series
+      const seriesContainer = document.getElementById('series');
+
+      // Crear los elementos de cada serie y agregarlos al contenedor
+      series.forEach(serie => {
+        const serieCard = document.createElement('div');
+        serieCard.classList.add('serie-card'); // Asegúrate de tener estilos para .serie-card
+
+        serieCard.innerHTML = `
+          <a href="detalleSerie.html?id_serie=${serie.ID_Serie}">
+            <img src="${serie.Imagen}" alt="${serie.Titulo}">
+            <h3>${serie.Título}</h3>
+          </a>
+        `;
+        seriesContainer.appendChild(serieCard);
+      });
+    } catch (error) {
+      console.error('Error al cargar las series:', error);
+      alert('No se pudieron cargar las series.');
+    }
+  });
   
 	   
   

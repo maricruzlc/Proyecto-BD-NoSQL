@@ -1,0 +1,112 @@
+/* Estilo general para la página */
+html {
+ 
+    background-size: cover; /* Asegura que la imagen cubra toda la página */
+    color: #000; /* Texto negro */
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con opacidad para mejorar la legibilidad */
+  }
+  
+  /* Contenedor principal de los detalles de la película */
+  #movie-detail {
+    margin-top: -50px;
+    margin-bottom: -50px;
+    display: flex; /* Para colocar la imagen y el texto en una fila */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: space-around; /* Espaciado entre imagen y texto */
+    
+    width: 2000px; /* Ajusta el tamaño del contenedor */
+    max-width: 1200px; /* Tamaño máximo del contenedor */
+    padding: 20px;
+    background-color: #fff; /* Fondo blanco para el contenedor */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo de la imagen */
+  #imagen {
+    width: 250px; /* Ajusta el tamaño de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+    object-fit: cover; /* Asegura que la imagen se recorte proporcionalmente si es necesario */
+    border-radius: 8px;
+    margin-right: 20px; /* Espacio entre la imagen y el texto */
+  }
+  
+  /* Estilo del texto */
+  #movie-detail h1 {
+    font-size: 2rem;
+    color: #333; /* Color del título */
+    margin: 0;
+  }
+  
+  #movie-detail p {
+    font-size: 1rem;
+    color: #666; /* Color de la sinopsis */
+  }
+  
+  
+
+ /* Estilo para la sección de comentarios */
+#comentarios-section {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#comentarios-section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#comentarios-container {
+  max-height: 300px; /* Define la altura máxima */
+  overflow-y: scroll; /* Habilita el scroll vertical */
+  border: 1px solid #ccc; /* Opcional: bordes para mayor claridad */
+  padding: 10px; /* Opcional: espacio interno */
+  background-color: #f9f9f9; /* Opcional: fondo para los comentarios */
+  border-radius: 5px; /* Opcional: bordes redondeados */
+}
+
+.comentario {
+  margin-bottom: 10px; /* Espaciado entre comentarios */
+}
+
+
+.comentario {
+  margin-bottom: 10px; /* Espaciado entre comentarios */
+}
+#comentarios-list {
+  max-height: 400px;  /* Ajusta la altura máxima según lo que necesites */
+  overflow-y: auto;   /* Agrega scroll solo en el eje vertical */
+  padding-right: 10px; /* Espacio extra para el scroll */
+}
+#comentarios-list li {
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  color:#000;
+  border-radius: 4px;
+}
+
+#comentarios-list li strong {
+  font-weight: bold;
+}
+
+#comentarios-list li small {
+  font-size: 0.9em;
+  color: #000000;
+}
