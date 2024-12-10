@@ -1,17 +1,10 @@
-const Favorito = require('../models/favoritoModel');
+const Favoritos = require('../models/Favoritos');
 
-const addFavorite = async (req, res) => {
-    const { ID_Favorito, ID_TipoContenido, ID_Usuario } = req.body;
-
-    try {
-        const nuevoFavorito = new Favorito({ ID_Favorito, ID_TipoContenido, ID_Usuario });
-        await nuevoFavorito.save();
-        res.status(200).send('Añadido a favoritos');
-    } catch (error) {
-        res.status(500).send('Error al añadir a favoritos');
-    }
-};
-
-module.exports = {
-    addFavorite
+exports.getFavoritos = async (req, res) => {
+  try {
+    const favoritos = await Favoritos.find();
+    res.status(200).json(favoritos);
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener favoritos', error });
+  }
 };

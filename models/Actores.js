@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
-const DirectorSchema = new mongoose.Schema({
-
-    "ID_Director": Number,
+const ActorSchema = new mongoose.Schema({
+    "ID_Actor": Number,
     "Nombre": String,
     "Biografía": String,
     "Filmografía": {
@@ -21,4 +20,4 @@ const DirectorSchema = new mongoose.Schema({
     }
   });
 
-module.exports = mongoose.model('Directores', DirectorSchema, 'Directores');
+module.exports = mongoose.model('Actores', ActorSchema, 'Actores');

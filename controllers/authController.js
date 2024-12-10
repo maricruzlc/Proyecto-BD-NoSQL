@@ -1,9 +1,8 @@
 const Usuario = require('../controllers/User');  // Asegúrate de que la ruta sea correcta según tu estructura de directorios
 const jwt = require('jsonwebtoken'); // Asegúrate de importar la librería
 
-
 const register = async (req, res) => {
-  const { user, password, email } = req.body;
+const { user, password, email } = req.body;
 
   // Validar que los campos no estén vacíos
   if (!user || !password || !email) {
@@ -30,8 +29,6 @@ const register = async (req, res) => {
     res.status(500).json({ message: 'Error al registrar el usuario' });
   }
 };
-
-
 
 // Inicio de sesión
 const login = async (req, res) => {
@@ -80,6 +77,7 @@ const login = async (req, res) => {
     });
   }
 };
+
 
 module.exports = {
   register,

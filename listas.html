@@ -10,14 +10,13 @@
   <style>
     .list-grid {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 15px;
       padding: 20px;
-      justify-content: center;
     }
 
     .list-item {
-      font-size: 2rem; /* Aumenta el tamaño de la fuente */
+      font-size: 1.5rem;
       font-weight: bold;
       text-align: center;
       color: #333;
@@ -26,20 +25,12 @@
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s ease-in-out;
-      width: 250px; /* Ajusta el tamaño de cada item */
     }
 
     .list-item:hover {
       transform: scale(1.05);
       background-color: #ff5722;
       color: #fff;
-    }
-
-    .list-item img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin-bottom: 10px;
     }
   </style>
 </head>
@@ -60,8 +51,8 @@
             <li class="menu-item"><a href="movies.html">Movies</a></li>
             <li class="menu-item"><a href="shows.html">TV Shows</a></li>
             <li class="menu-item"><a href="news.html">News</a></li>
-            <li class="menu-item current-menu-item"><a href="favoritos.html">Favorites</a></li>
-            <li class="menu-item "><a href="listas.html">Lists</a></li>
+            <li class="menu-item"><a href="favoritos.html">Favorites</a></li>
+            <li class="menu-item current-menu-item"><a href="listas.html">Lists</a></li>
             <li class="menu-item"><a href="Login.html">Log in</a></li>
           </ul>
         </div>
@@ -70,9 +61,9 @@
 
     <main class="main-content">
       <div class="container">
-        <h2 class="section-title">Los favoritos del público!</h2>
-        <div id="favoritos-container" class="list-grid">
-          <!-- favoritos generadas dinámicamente aquí -->
+        <h2 class="section-title">Listas recomendadas</h2>
+        <div id="list-container" class="list-grid">
+          <!-- Listas generadas dinámicamente aquí -->
         </div>
       </div>
     </main>
@@ -81,32 +72,22 @@
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
       try {
-        // Hacer la solicitud a la API
-        const response = await fetch('http://localhost:3000/api/favoritos'); // Asegúrate de que esta ruta sea correcta
+        const response = await fetch('http://localhost:3000/api/listas'); // Asegúrate de que esta ruta sea correcta
         const data = await response.json();
 
-        // Imprime los datos completos en la consola para verificar su estructura
-        console.log('Datos de favoritos:', data);
+        const listContainer = document.getElementById('list-container');
+        listContainer.innerHTML = ""; // Limpia el contenedor
 
-        const favoritosContainer = document.getElementById('favoritos-container');
-        favoritosContainer.innerHTML = ""; // Limpia el contenedor
-
-        // Asegúrate de que los datos son un array y contienen la propiedad 'Título'
-        data.forEach((favorito) => {
-          console.log('Favorito:', favorito); // Imprime cada objeto favorito
-
-          // Verifica si la propiedad 'Titulo' está disponible y muestra un mensaje adecuado
-          const favoritosHTML = `
+        data.forEach((lista) => {
+          const listHTML = `
             <div class="list-item">
-              <img src="${favorito.Imagen ? favorito.Imagen : 'default-image.jpg'}" alt="Imagen de la película">
-              <div>${favorito.Título ? favorito.Título : 'Título no disponible'}</div>
+              ${lista.Nombre}
             </div>
           `;
-          
-          favoritosContainer.insertAdjacentHTML('beforeend', favoritosHTML);
+          listContainer.insertAdjacentHTML('beforeend', listHTML);
         });
       } catch (error) {
-        console.error('Error al cargar las favoritos:', error);
+        console.error('Error al cargar las listas:', error);
       }
     });
   </script>

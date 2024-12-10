@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.addEventListener('DOMContentLoaded', async () => {
     try {
       // Hacer la solicitud para obtener las series
-      const response = await fetch('http://localhost:3000/api/Series'); // Asegúrate de que esta ruta esté correcta
+      const response = await fetch('http://localhost:3000/api/Series'); 
       if (!response.ok) {
         throw new Error('No se pudieron cargar las series');
       }
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       });
     } catch (error) {
       console.error('Error al cargar las series:', error);
-      alert('No se pudieron cargar las series.');
+      
     }
   });
   

@@ -11,7 +11,6 @@ exports.obtenerSeries = async (req, res) => {
 };
 
 
-
 exports.obtenerSerie = async (req, res) => {
   try {
     const serieId = req.params.id;

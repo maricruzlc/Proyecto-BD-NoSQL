@@ -144,6 +144,7 @@ db.Peliculas.insertMany([
     ID_TipoContenido: 1,
     ID_Productora: 2
   },
+
   {
     ID_Pelicula: 5,
     Título: "Foxcatcher",
@@ -243,19 +244,95 @@ db.Comentario.insertOne({
 });
 
 
-db.Favoritos.insertOne({
-  ID_Favorito: 1,
-  ID_TipoContenido: 1,
-  ID_Usuario: 1
-});
+db.Favoritos.insertMany([
+  {
+    ID_Favorito: 1,
+    Título: "The Martian",
+    Imagen: "https://image.tmdb.org/t/p/original/mWTJMijZRuvxUbE1WgKwRBwveuX.jpg",
+    ID_TipoContenido: 1
+  },
+  {
+    ID_Favorito: 2,
+    Título: "Interstellar",
+    Imagen: "https://image.tmdb.org/t/p/original/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+    ID_TipoContenido: 1
+  },
+  {
+    ID_Favorito: 3,
+    Título: "Inception",
+    Imagen: "https://image.tmdb.org/t/p/original/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg",
+    ID_TipoContenido: 1
+  },
+  {
+    ID_Favorito: 4,
+    Título: "The Godfather",
+    Imagen: "https://image.tmdb.org/t/p/original/iVZ3JAcAjmguGPnRNfWFOtLHOuY.jpg",
+    ID_TipoContenido: 1
+  },
+  {
+    ID_Favorito: 5,
+    Título: "The Dark Knight",
+    Imagen: "https://image.tmdb.org/t/p/original/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    ID_TipoContenido: 1
+  }
+]);
 
 
-db.Listas.insertOne({
-  ID_Lista: 1,
-  Nombre: "Lista de Series de Comedia",
-  ID_TipoContenido: 2,
-  ID_Usuario: 1
-});
+
+
+db.Listas.insertMany([
+  {
+    ID_Lista: 1,
+    Nombre: "Lista de Series de Comedia",
+    ID_TipoContenido: 1
+  },
+  {
+    ID_Lista: 2,
+    Nombre: "Lista de Películas de Acción",
+    ID_TipoContenido: 1
+  },
+  {
+    ID_Lista: 3,
+    Nombre: "Lista de Documentales Interesantes",
+    ID_TipoContenido: 2
+  },
+  {
+    ID_Lista: 4,
+    Nombre: "Lista de Series Animadas",
+    ID_TipoContenido: 1
+  },
+  {
+    ID_Lista: 5,
+    Nombre: "Lista de Películas de Ciencia Ficción",
+    ID_TipoContenido: 1
+  },
+  {
+    ID_Lista: 6,
+    Nombre: "Lista de Reality Shows",
+    ID_TipoContenido: 3
+  },
+  {
+    ID_Lista: 7,
+    Nombre: "Lista de Películas Clásicas",
+    ID_TipoContenido: 1
+  },
+  {
+    ID_Lista: 8,
+    Nombre: "Lista de Series de Drama",
+    ID_TipoContenido: 1
+  },
+  {
+    ID_Lista: 9,
+    Nombre: "Lista de Películas de Terror",
+    ID_TipoContenido: 1
+  },
+  {
+    ID_Lista: 10,
+    Nombre: "Lista de Programas de Cocina",
+    ID_TipoContenido: 3
+  }
+]);
+
 
 
 db.Noticias.insertOne({

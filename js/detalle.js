@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById('duracion').innerText = `${data.pelicula.Duración} minutos` || "Duración no disponible";
     document.getElementById('director').innerText = data.pelicula.Director || "Director no disponible";
     document.getElementById('actor').innerText = data.pelicula.Actor || "Actor no disponible";
-    document.getElementById('Genero').innerText = data.pelicula.Genero || "Género no disponible";
+    document.getElementById('genero').innerText = data.pelicula.Genero || "Género no disponible";
     document.getElementById('productora').innerText = data.pelicula.Productora || "Productora no disponible";
     document.getElementById('tipocontenido').innerText = data.pelicula.TipoContenido || "Tipo de contenido no disponible";
 

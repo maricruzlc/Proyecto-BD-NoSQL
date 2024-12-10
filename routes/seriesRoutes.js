@@ -7,7 +7,4 @@ router.get('/', seriesController.obtenerSeries);
 
 router.get('/:id', seriesController.obtenerSerie);
 
-
-
-
 module.exports = router;

@@ -2,16 +2,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 require('dotenv').config();
+
+//modelos
 const Pelicula = require('./models/Pelicula');
+const Serie = require('./models/Serie');
 const Director = require('./models/Directores');
+const Actor = require('./models/Actores');
+const Genero = require('./models/Genero');
+const Productora = require('./models/Productoras');
+const TipoContenido = require('./models/TipoContenido');
 const Comentario = require('./models/Comentarios');
 
-const Serie=require('./models/Serie');
+
 const seriesRoutes = require('./routes/seriesRoutes');
-
-
-
-
 
 const app = express();
 app.use(express.json());
@@ -22,10 +25,18 @@ mongoose
   .then(() => console.log('Conexión exitosa a MongoDB'))
   .catch((err) => console.error('Error al conectar a MongoDB:', err));
 
+// Importar rutas
+const listaRoutes = require('./routes/listasRoutes');
+const favoritosRoutes = require('./routes/favoritosRoutes');
+// Usar rutas
+app.use('/api/listas', listaRoutes);
+app.use('/api/favoritos', favoritosRoutes);
+
 // Ruta inicial
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html')); // Asegúrate de que index.html esté en la raíz
+  res.sendFile(path.join(__dirname, 'index.html')); 
 });
+
 
 // Endpoint para agregar comentarios
 app.post('/comentarios', async (req, res) => {
@@ -40,8 +51,8 @@ app.post('/comentarios', async (req, res) => {
     // Crear datos adicionales automáticamente
     const nuevoComentario = new Comentario({
       ID_Comentario: Math.floor(Math.random() * 1000000), // Generar ID único
-      ID_Usuario: 1, // Puedes cambiar esto según el usuario autenticado
-      ID_TipoContenido: 1, // Tipo de contenido predeterminado
+      ID_Usuario: 1, 
+      ID_TipoContenido: 1, 
       Fecha: new Date(),
       Comentario: texto,
       Calificacion: calificacion,
@@ -55,8 +66,6 @@ app.post('/comentarios', async (req, res) => {
     res.status(500).json({ message: 'Error al guardar el comentario', error });
   }
 });
-
-
 
   app.get('/Peliculas/:id', async (req, res) => {
     try {
@@ -76,53 +85,34 @@ app.post('/comentarios', async (req, res) => {
       const comentarios = await Comentario.find({ ID_TipoContenido: pelicula.ID_TipoContenido })
         .select('Comentario Calificacion Fecha ID_Usuario')
         .exec();
+
+      const director=await Director.findOne({ ID_Director: pelicula.ID_Director }).exec();
+      const actor=await Actor.findOne({ ID_Actor: pelicula.ID_Actor }).exec();
+      const genero=await Genero.findOne({ ID_Genero: pelicula.ID_Género }).exec();
+      const productora=await Productora.findOne({ ID_Productora: pelicula.ID_Productora }).exec();
+      const tipoContenido=await TipoContenido.findOne({ ID_TipoContenido: pelicula.ID_TipoContenido }).exec();
+
+      //FALTA AGREGAR LA INFO DE LAS SERIES
+
   
-      // Asignar los nombres basados en los IDs (como ya lo tienes en tu código)
+      //Asignar los nombres basados en los IDs 
       let NombreActor = '';
       let NombreDirector = '';
       let NombreGenero = '';
       let NombreProductora = '';
       let NombreTipoContenido = '';
-  
-      if (pelicula.ID_Actor === 1) {
-        NombreActor = 'Paul Mescal';
-      } else if (pelicula.ID_Actor === 2) {
-        NombreActor = 'Steve Carell';
-      } else {
-        NombreActor = 'Actor no disponible';
-      }
-  
-      if (pelicula.ID_Director === 1) {
-        NombreDirector = 'Ridley Scott';
-      } else if (pelicula.ID_Director === 2) {
-        NombreDirector = 'Randall Einhorn';
-      } else {
-        NombreDirector = 'Director no disponible';
-      }
-  
-      if (pelicula.ID_Género === 1) {
-        NombreGenero = 'Acción';
-      } else if (pelicula.ID_Género === 2) {
-        NombreGenero = 'Comedia';
-      } else {
-        NombreGenero = 'Género no disponible';
-      }
-  
-      if (pelicula.ID_Productora === 1) {
-        NombreProductora = 'Scott Free Productions';
-      } else if (pelicula.ID_Productora === 2) {
-        NombreProductora = 'Deedle-Dee Productions';
-      } else {
-        NombreProductora = 'Productora no disponible';
-      }
-  
-      if (pelicula.ID_TipoContenido === 1) {
-        NombreTipoContenido = 'Película';
-      } else if (pelicula.ID_TipoContenido === 2) {
-        NombreTipoContenido = 'Serie';
-      } else {
-        NombreTipoContenido = 'Tipo de contenido no disponible';
-      }
+
+       NombreActor = actor.Nombre;
+       NombreDirector = director.Nombre;
+       NombreGenero = genero.Nombre;
+       NombreProductora = productora.Nombre;
+       NombreTipoContenido = tipoContenido.NombreContenido;
+
+       console.log(NombreActor);
+       console.log(NombreDirector);
+       console.log(NombreGenero);
+       console.log(NombreProductora);
+       console.log(NombreTipoContenido);
   
       const peliculaConNombres = {
         ...pelicula.toObject(),
@@ -132,8 +122,10 @@ app.post('/comentarios', async (req, res) => {
         Productora: NombreProductora,
         TipoContenido: NombreTipoContenido,
       };
+
+    
   
-      console.log(peliculaConNombres);  // Verificar la respuesta antes de enviarla
+      console.log(peliculaConNombres); 
   
       // Enviar la respuesta con la película, las películas relacionadas y los comentarios
       res.json({
@@ -150,25 +142,9 @@ app.post('/comentarios', async (req, res) => {
       res.status(500).json({ message: 'Error en el servidor' });
     }
   });
-  
-  
-  
- /*
-  app.get('/peliculas', async (req, res) => {
-    try {
-      const peliculas = await Pelicula.find().populate('ID_Director', 'Nombre').exec();
-      res.json(peliculas);  // Puedes enviar la respuesta como JSON para el front-end
-    } catch (err) {
-      console.error('Error al obtener las películas:', err);
-      res.status(500).json({ mensaje: 'Error al obtener las películas', error: err.message });
-    }
-  });*/
-  
-  // Ruta para servir el archivo detalle.html
-  /*app.get('/detalle', (req, res) => {
-    res.sendFile(path.join(__dirname, 'detalle.html'));
-  });*/
-  
+
+ 
+
 // Endpoint para obtener comentarios
 app.get('/comentarios', async (req, res) => {
   const tipoContenido = req.query.ID_TipoContenido;  // Obtener el valor de ID_TipoContenido desde los parámetros de la URL
@@ -193,8 +169,6 @@ app.get('/comentarios', async (req, res) => {
 });
 
 app.use('/Series', seriesRoutes);
-
-
   
 app.listen(3000, () => {
   console.log('Servidor corriendo en http://localhost:3000');
@@ -206,9 +180,9 @@ app.listen(3000, () => {
 const peliculasRoutes = require('./routes/peliculasRoutes');
 const contenidoRoutes = require('./routes/contenidoRoutes');
 const noticiaRoutes = require('./routes/noticiaRoutes');
-const authRoutes = require('./routes/authRoutes'); // Nueva línea
+const authRoutes = require('./routes/authRoutes'); 
 const authController = require('./controllers/authController');
-const comentariosRoutes=require('./routes/comentariosRoutes')
+const comentariosRoutes=require('./routes/comentariosRoutes');
 app.post('/usuarios/registro', authController.register);
 
 // Registrar rutas
@@ -219,8 +193,4 @@ app.use('/api/contenido', contenidoRoutes);
 app.use('/api/noticias', noticiaRoutes);
 app.use('/api/comentarios', comentariosRoutes);
 app.use('/api', peliculasRoutes);
-app.use('/usuarios', authRoutes); // Nueva línea para usuarios
-
-
-// Iniciar el servidor
-
+app.use('/usuarios', authRoutes); 

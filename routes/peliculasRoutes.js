@@ -12,7 +12,4 @@ router.post('/', peliculasController.crearPelicula);
 
 router.get('/:id', peliculasController.obtenerPelicula);
 
-
-  
-
 module.exports = router;

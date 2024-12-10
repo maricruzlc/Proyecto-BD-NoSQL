@@ -27,13 +27,6 @@ exports.crearPelicula = async (req, res) => {
 
 
 
-
-
-
-
-
-
-
   const mongoose = require('mongoose');
   const winston = require('winston');
 const logger = winston.createLogger({

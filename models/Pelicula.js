@@ -13,7 +13,6 @@ const PeliculaSchema = new mongoose.Schema({
   ID_TipoContenido: { type: Number, required: true },
   ID_Productora: { type: Number, required: true },
  
-
 });
 
 module.exports = mongoose.model('Peliculas', PeliculaSchema, 'Peliculas');
