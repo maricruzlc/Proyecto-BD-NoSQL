@@ -238,6 +238,8 @@ db.Comentario.insertOne({
   ID_Comentario: 1,
   ID_TipoContenido: 1,
   ID_Usuario: 1,
+  ID_Pelicula: 1,
+  ID_Serie: null,
   Fecha: new Date(),
   Comentario: "Excelente Pelicula",
   Calificacion: 5
@@ -255,12 +257,6 @@ db.Favoritos.insertMany([
     ID_Favorito: 2,
     Título: "Interstellar",
     Imagen: "https://image.tmdb.org/t/p/original/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-    ID_TipoContenido: 1
-  },
-  {
-    ID_Favorito: 3,
-    Título: "Inception",
-    Imagen: "https://image.tmdb.org/t/p/original/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg",
     ID_TipoContenido: 1
   },
   {
